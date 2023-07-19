@@ -2,7 +2,7 @@
 
 /**
  * _isalpha - checking for alpha
- *
+ * @c: the int to be checked
  * Return: Always 0.
  */
 
