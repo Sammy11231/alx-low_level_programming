@@ -2,23 +2,25 @@
 
 /**
  * leet - encodes a string
- * @n: element
- * Return: 0
+ * @s: strings
+ * Return: r
  */
 
-char *leet(char *n)
+char *leet(char *s)
 {
-	int i, j;
-	char s1[] = "aAeEoOtTlL";
-	char s2[] = "4433007711";
+	char *r = s;
+	char a[] = { 'a', 'e', 'o', 't', 'l' };
+	char n[] = { 4, 3, 0, 7, 1 };
+	int i = 0;
 
-	for (i = 0; n[i] != '\0'; i++)
+	while (*s)
 	{
-		for (j = 0; j < 10; j++)
+		for (i = 0; i < 5; i++)
 		{
-			if (n[1] == s1[j])
-				n[i] = s2[j];
+			if (*s == a[i] || *s == a[i] - 32)
+				*s = n[i] + '0';
 		}
+		s++;
 	}
-	return (0);
+	return (r);
 }

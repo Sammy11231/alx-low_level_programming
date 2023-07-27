@@ -3,18 +3,18 @@
 /**
  * string_toupper - change lowercase to uppercase
  * @n: string
- * Return: 0.
+ * Return: pointer r
  */
 
 char *string_toupper(char *n)
 {
-	int i = 0;
+	char *r = n;
 
-	while (n[i] != '\0')
+	while (*n)
 	{
-		if (n[i] >= 'a' && n[i] <= 'z')
-			n[i] = n[i] - 32;
-		i++;
+		if (*n >= 'a' && *n <= 'z')
+			*n -= 32;
+		n++;
 	}
-	return (0);
+	return (r);
 }
