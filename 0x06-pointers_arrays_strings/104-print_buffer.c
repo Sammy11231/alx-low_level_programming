@@ -1,47 +1,52 @@
 #include "main.h"
 #include <stdio.h>
-#include <string.h>
-
 /**
- * simple_print_buffer - prints buffer in hexa
- * @buffer: the address of memory to print
- * @size: the size of the memory to print
- *
- * Return: Nothing.
+ * print_line - prints a s bytes of a buffer
+ * @c: buffer to print
+ * @s: bytes of buffer to print
+ * @l: line of buffer to print
+ * Return: void
  */
-void simple_print_buffer(char *buffer, unsigned int size)
+void print_line(char *c, int s, int l)
 {
-	unsigned int i;
+	int j, k;
 
-	i = 0;
-	while (i < size)
+	for (j = 0; j <= 9; j++)
 	{
-		if (i % 10)
-		{
-			printf(" ");
-		}
-		if (!(i % 10) && i)
-		{
-			printf("\n");
-		}
-		printf("0x%02x", buffer[i]);
-		i++;
+		if (j <= s)
+			printf("%02x", c[l * 10 + j]);
+		else
+			printf("  ");
+		if (j % 2)
+			putchar(' ');
 	}
-	printf("\n");
+	for (k = 0; k <= s; k++)
+	{
+		if (c[l * 10 + k] > 31 && c[l * 10 + k] < 127)
+			putchar(c[l * 10 + k]);
+		else
+			putchar('.');
+	}
+	putchar('\n');
 }
 
 /**
- * main - check the code for Holberton School students.
- *
- * Return: Always 0.
+ * print_buffer - prints a buffer
+ * @b: buffer to print
+ * @size: size of buffer
+ * Return: void
  */
-int main(void)
+void print_buffer(char *b, int size)
 {
-	char buffer[98] = {0x00};
+	int i;
 
-	simple_print_buffer(buffer, 98);
-	memset(buffer, 0x01, 95);
-	printf("-------------------------------------------------\n");
-	simple_print_buffer(buffer, 98);
-	return (0);
+	for (i = 0; i <= (size - 1) / 10 && size; i++)
+	{
+		printf("%08x: ", i * 10);
+		if (i < size / 10)
+			print_line(b, 9, i);
+		else
+			print_line(b, size % 10 - 1, i);
+	}
+	putchar('\n');
 }
