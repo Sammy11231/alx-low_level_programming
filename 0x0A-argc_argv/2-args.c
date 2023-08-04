@@ -3,16 +3,16 @@
 
 /**
  * main - program that print all the agr inputed
- * @agrc: num of command line inputed
- * @agrv: array name
+ * @argc: num of command line inputed
+ * @argv: array name
  * return: always 0
  */
 
-int main(int agrc, char *agrv[])
+int main(int argc, char *argv[])
 {
 	int i;
 	
-	for (i = 0; i < agrc; i++)
-		printf("%s\n", agrv[i]);
+	for (i = 0; i < argc; i++)
+		printf("%s\n", argv[i]);
 	return (0);
 }
